@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>editthiscookie importer</title>
+</head>
+<body>
+<script src="/js/jquery.js"></script>
+<script>
+function s2j(){
+var instr = $('#input').val();
+var cks = instr.split(';');
+var resu = new Array();
+
+for(k in cks){
+var temp = new Object();
+temp['domain'] = $('#domain').val();
+temp['path']='/';
+v = cks[k].split('=');
+temp['name']= $.trim(v.shift());
+temp['value'] = v.join('=');
+resu.push(temp);
+}
+
+$('#output').val(JSON.stringify(resu));
+
+}
+</script>
+<textarea id="input" cols=100 rows=30></textarea>
+<textarea id="output" cols=100 rows=30></textarea>
+</br>
+domain:<input id='domain' type='text' width="50"/>
+<button onclick="s2j()" style="width:100px;height:30px">convert</button><br/><br/><br/><br/><br/><br/>
+Xss Cookie For EditThisCookie : 用于将XSS获取到的Cookie转变为EditThisCookie支持的导入格式
+
+
+</body>
+</html>
